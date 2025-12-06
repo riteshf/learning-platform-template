@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Introduction to the Topic",
+    "description": "Overview of key concepts and learning objectives for this lesson.",
+    "duration": 60,
+    "order": 1
+  },
+  {
+    "title": "Deep Dive and Practice",
+    "description": "Hands-on exploration of the topic with practical examples.",
+    "duration": 90,
+    "order": 2
+  }
+]

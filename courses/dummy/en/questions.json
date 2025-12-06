@@ -1,0 +1,30 @@
+[
+  {
+    "type": "QUIZ",
+    "question": "What is the main concept covered in this lesson?",
+    "options": [
+      "Option A",
+      "Option B (correct answer)",
+      "Option C",
+      "Option D"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Option B is correct because...",
+    "mandatory": true
+  },
+  {
+    "type": "POLL",
+    "question": "Which topic would you like to explore more?",
+    "options": [
+      "Topic A",
+      "Topic B",
+      "Topic C"
+    ],
+    "mandatory": false
+  },
+  {
+    "type": "TEXT",
+    "question": "Describe your understanding of the key concept.",
+    "mandatory": false
+  }
+]

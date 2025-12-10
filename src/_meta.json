@@ -1,9 +1,3 @@
 {
-  "lessonOrder": ["introduction", "core-concepts"],
-  "availability": {
-    "pre": { "open": true, "daysBeforeLiveClass": 7 },
-    "live": { "open": true, "scheduledDate": "2025-01-15T18:00:00Z" },
-    "post": { "open": true, "daysAfterLiveClass": 1 }
-  },
-  "contentNotes": "Lessons follow a pre-class → live-class → post-class structure. Questions are referenced by DB ID using <!-- question:db:QUESTION_ID --> syntax."
+  "lessonOrder": ["introduction", "core-concepts"]
 }

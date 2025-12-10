@@ -1,76 +1,18 @@
 {
   "title": "Core Concepts & Fundamentals",
-  "description": "Deep dive into the foundational concepts that underpin the entire course. We'll explore key principles, best practices, and real-world applications.",
-  "contentFiles": {
-    "preClass": "pre-class/README.mdx",
-    "liveClass": "live-class/README.mdx",
-    "postClass": "post-class/README.mdx",
-    "instructorNotes": "instructor-notes/README.mdx"
-  },
+  "summary": "Deep dive into the principles, patterns, and practices you will reuse in every lesson.",
+  "objectives": [
+    "Connect core principles to practical decisions",
+    "Recognize patterns in real code",
+    "Prep learners for their first assignment"
+  ],
+  "durationMinutes": 75,
+  "tags": ["fundamentals", "patterns"],
   "slides": [
-    { "slug": "foundations", "file": "01-foundations.mdx" },
-    { "slug": "principles", "file": "02-principles.mdx" },
-    { "slug": "patterns", "file": "03-patterns.mdx" },
-    { "slug": "bestpractices", "file": "04-best-practices.mdx" },
-    { "slug": "case-studies", "file": "05-case-studies.mdx" }
-  ],
-  "assets": "assets/",
-  "questionReferences": [
-    {
-      "id": "Q_CC_001",
-      "type": "TEXT",
-      "phase": "pre",
-      "context": "Recap: What did you learn in the introduction?"
-    },
-    {
-      "id": "Q_CC_002",
-      "type": "POLL",
-      "phase": "live",
-      "context": "Poll: Which principle resonates most with you?"
-    },
-    {
-      "id": "Q_CC_003",
-      "type": "CODE_SCRIPT",
-      "phase": "live",
-      "context": "Live coding: Implement a basic pattern"
-    },
-    {
-      "id": "Q_CC_004",
-      "type": "QUIZ",
-      "phase": "post",
-      "context": "Quiz: Core concepts mastery assessment (MCQ)"
-    },
-    {
-      "id": "Q_CC_005",
-      "type": "MULTI_SELECT",
-      "phase": "post",
-      "context": "Identify all valid design patterns (multiple answers)"
-    },
-    {
-      "id": "Q_CC_006",
-      "type": "TEXT",
-      "phase": "post",
-      "context": "Fill in the blanks: Key terminology"
-    },
-    {
-      "id": "Q_CC_007",
-      "type": "CODE_SCRIPT",
-      "phase": "post",
-      "context": "Practice: Build a small example"
-    }
-  ],
-  "assignmentReference": {
-    "id": "A_MODULE1_001",
-    "title": "Build Your First Application",
-    "description": "Apply the core concepts learned in lessons 1-2 to build a complete application."
-  },
-  "surpriseAssignment": false,
-  "learningObjectives": [
-    "Understand the foundational concepts and terminology",
-    "Apply core principles to solve real-world problems",
-    "Recognize common design patterns and anti-patterns",
-    "Follow industry best practices",
-    "Build a mental model for deeper topics"
-  ],
-  "difficulty": "intermediate"
+    "01-foundations.mdx",
+    "02-principles.mdx",
+    "03-patterns.mdx",
+    "04-best-practices.mdx",
+    "05-case-studies.mdx"
+  ]
 }

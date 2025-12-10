@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { globSync } from "glob";
 import matter from "gray-matter";
 import { z } from "zod";
 
@@ -13,137 +12,120 @@ import { z } from "zod";
 // - Instructor notes are stored in Git with role-based access
 // ============================================================================
 
-const courseSchema = z.object({
-  schemaVersion: z.literal("1.0.0"),
-  slug: z
-    .string()
-    .min(1)
-    .regex(/^[a-z0-9-]+$/),
-  title: z.string().min(1),
-  description: z.string().min(1),
-  instructor: z
-    .object({
-      name: z.string().min(1),
-      email: z.string().email(),
-      bio: z.string().optional(),
-    })
-    .optional(),
-  tags: z.array(z.string()).default([]),
-  level: z.enum(["beginner", "intermediate", "advanced", "expert"]),
-  estimatedMinutes: z.number().int().positive(),
-  estimatedLessons: z.number().int().positive(),
-  category: z.string().min(1),
-  publishStatus: z.enum(["draft", "published"]),
-  contentStructure: z.literal("hybrid"),
-  contentNotes: z.string().optional(),
-});
+const courseSchema = z
+  .object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    instructor: z
+      .object({
+        name: z.string().min(1),
+        email: z.string().email(),
+        bio: z.string().optional(),
+      })
+      .optional(),
+    tags: z.array(z.string()).default([]),
+    level: z.enum(["beginner", "intermediate", "advanced", "expert"]),
+    estimatedMinutes: z.number().int().positive(),
+    estimatedLessons: z.number().int().positive(),
+    category: z.string().min(1),
+    publishStatus: z.enum(["draft", "published"]),
+    contentStructure: z.literal("hybrid"),
+    contentNotes: z.string().optional(),
+  })
+  .passthrough();
 
-const metaSchema = z.object({
-  schemaVersion: z.literal("1.0.0"),
-  courseSlug: z.string().min(1),
-  lessonOrder: z.array(z.string().min(1)),
-  availability: z
-    .object({
-      pre: z.object({
-        open: z.boolean(),
-        daysBeforeLiveClass: z.number().int().nonnegative().optional(),
-      }),
-      live: z.object({
-        open: z.boolean(),
-        scheduledDate: z.string().datetime().optional(),
-      }),
-      post: z.object({
-        open: z.boolean(),
-        daysAfterLiveClass: z.number().int().nonnegative().optional(),
-      }),
-    })
-    .partial()
-    .default({}),
-  contentNotes: z.string().optional(),
-});
+const metaSchema = z
+  .object({
+    lessonOrder: z.array(z.string().min(1)),
+    availability: z
+      .object({
+        pre: z.object({
+          open: z.boolean(),
+          daysBeforeLiveClass: z.number().int().nonnegative().optional(),
+        }),
+        live: z.object({
+          open: z.boolean(),
+          scheduledDate: z.string().datetime().optional(),
+        }),
+        post: z.object({
+          open: z.boolean(),
+          daysAfterLiveClass: z.number().int().nonnegative().optional(),
+        }),
+      })
+      .partial()
+      .default({}),
+    contentNotes: z.string().optional(),
+  })
+  .passthrough();
 
-const lessonSchema = z.object({
-  schemaVersion: z.literal("1.0.0"),
-  slug: z
-    .string()
-    .min(1)
-    .regex(/^[a-z0-9-]+$/),
-  title: z.string().min(1),
-  description: z.string().min(1),
-  order: z.number().int().positive(),
-  durationMinutes: z.number().int().positive(),
-  contentFiles: z.object({
-    preClass: z.string().endsWith(".mdx"),
-    liveClass: z.string().endsWith(".mdx"),
-    postClass: z.string().endsWith(".mdx"),
-    instructorNotes: z.string().endsWith(".mdx"),
-  }),
-  slides: z.array(
-    z.object({
-      slug: z.string().min(1),
-      file: z.string().endsWith(".mdx"),
-      order: z.number().int().positive(),
-    })
-  ),
-  assets: z.string(),
-  questionReferences: z.array(
-    z.object({
-      id: z.string().min(1),
-      type: z.enum([
-        "POLL",           // Poll questions for live engagement
-        "QUIZ",           // Multiple choice questions (MCQ)
-        "CHECKLIST",      // Checklist items (installations, prerequisites)
-        "MULTI_SELECT",   // Multiple correct answers
-        "TEXT",           // Fill in the blanks / short answer
-        "CODE_SCRIPT",    // Code execution / script questions
-      ]),
-      phase: z.enum(["pre", "live", "post", "instructor"]),
-      context: z.string().optional(),
-    })
-  ),
-  assignmentReference: z
-    .object({
-      id: z.string().min(1),
-      title: z.string().min(1),
-      description: z.string().optional(),
-      dueAfterDays: z.number().int().nonnegative().optional(),
-      estimatedMinutes: z.number().int().positive().optional(),
-    })
-    .optional(),
-  surpriseAssignment: z.boolean().default(false),
-  estimatedStudyTime: z
-    .object({
-      preClass: z.number().int().nonnegative(),
-      liveClass: z.number().int().nonnegative(),
-      postClass: z.number().int().nonnegative(),
-    })
-    .optional(),
-  learningObjectives: z.array(z.string()).optional(),
-  difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(),
-});
+const lessonSchema = z
+  .object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    contentFiles: z.object({
+      preClass: z.string().regex(/\.mdx?$/),
+      liveClass: z.string().regex(/\.mdx?$/),
+      postClass: z.string().regex(/\.mdx?$/),
+      instructorNotes: z.string().regex(/\.mdx?$/),
+    }),
+    slides: z.array(
+      z.object({
+        slug: z.string().min(1),
+        file: z.string().regex(/\.mdx?$/),
+      })
+    ),
+    assets: z.string(),
+    questionReferences: z.array(
+      z.object({
+        id: z.string().min(1),
+        type: z.enum([
+          "POLL", // Poll questions for live engagement
+          "QUIZ", // Multiple choice questions (MCQ)
+          "CHECKLIST", // Checklist items (installations, prerequisites)
+          "MULTI_SELECT", // Multiple correct answers
+          "TEXT", // Fill in the blanks / short answer
+          "CODE_SCRIPT", // Code execution / script questions
+        ]),
+        phase: z.enum(["pre", "live", "post", "instructor"]),
+        context: z.string().optional(),
+      })
+    ),
+    assignmentReference: z
+      .object({
+        id: z.string().min(1),
+        title: z.string().min(1),
+        description: z.string().optional(),
+        dueAfterDays: z.number().int().nonnegative().optional(),
+        estimatedMinutes: z.number().int().positive().optional(),
+      })
+      .optional(),
+    surpriseAssignment: z.boolean().default(false),
+    learningObjectives: z.array(z.string()).optional(),
+    difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(),
+  })
+  .passthrough();
 
-const slideFrontmatterSchema = z.object({
-  schemaVersion: z.literal("1.0.0"),
-  slug: z.string().min(1),
-  title: z.string().min(1),
-  type: z.enum(["intro", "content", "interactive", "closing"]),
-  order: z.number().int().positive(),
-  durationMinutes: z.number().int().nonnegative(),
-  visibility: z.enum(["public", "instructor"]),
-});
+const slideFrontmatterSchema = z
+  .object({
+    title: z.string().min(1).optional(),
+    type: z.enum(["intro", "content", "interactive", "closing"]).optional(),
+    visibility: z.enum(["public", "instructor"]).optional(),
+  })
+  .passthrough();
 
-const instructorNotesFrontmatterSchema = z.object({
-  schemaVersion: z.literal("1.0.0"),
-  visibility: z.literal("instructor"),
-  title: z.string().min(1),
-});
+const instructorNotesFrontmatterSchema = z
+  .object({
+    visibility: z.literal("instructor"),
+    title: z.string().min(1),
+  })
+  .passthrough();
 
-const mdxContentFrontmatterSchema = z.object({
-  title: z.string().min(1),
-  order: z.number().int().nonnegative(),
-  estimatedTime: z.number().int().nonnegative().optional(),
-  visibility: z.enum(["public", "instructor"]).default("public"),
-});
+const mdxContentFrontmatterSchema = z
+  .object({
+    title: z.string().min(1).optional(),
+    visibility: z.enum(["public", "instructor"]).default("public"),
+  })
+  .passthrough();
 
 // ============================================================================
 // VALIDATION LOGIC
@@ -222,13 +204,6 @@ function validateLesson(
     return;
   }
 
-  if (lesson.data.slug !== folderSlug) {
-    addError(
-      ctx,
-      `${lessonFile}: slug '${lesson.data.slug}' must match folder name '${folderSlug}'`
-    );
-  }
-
   // Validate content files exist
   const contentFiles = lesson.data.contentFiles;
   Object.entries(contentFiles).forEach(([key, file]) => {
@@ -285,7 +260,7 @@ function validateLesson(
 }
 
 function validateSlides(
-  slides: Array<{ slug: string; file: string; order: number }>,
+  slides: Array<{ slug: string; file: string }>,
   slidesDir: string,
   ctx: ErrorCollector
 ) {
@@ -295,7 +270,6 @@ function validateSlides(
   }
 
   const seenSlugs = new Set<string>();
-  const seenOrders = new Set<number>();
 
   slides.forEach((slide) => {
     const filePath = path.join(slidesDir, slide.file);
@@ -308,12 +282,7 @@ function validateSlides(
     if (seenSlugs.has(slide.slug)) {
       addError(ctx, `${slidesDir}: duplicate slide slug '${slide.slug}'`);
     }
-    if (seenOrders.has(slide.order)) {
-      addError(ctx, `${slidesDir}: duplicate slide order ${slide.order}`);
-    }
-
     seenSlugs.add(slide.slug);
-    seenOrders.add(slide.order);
 
     validateMdxFrontmatter(filePath, ctx);
   });

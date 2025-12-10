@@ -1,6 +1,4 @@
 {
-  "schemaVersion": "1.0.0",
-  "courseSlug": "sample-course",
   "lessonOrder": ["introduction", "core-concepts"],
   "availability": {
     "pre": { "open": true, "daysBeforeLiveClass": 7 },

@@ -1,26 +1,18 @@
 {
-  "schemaVersion": "1.0.0",
-  "slug": "core-concepts",
   "title": "Core Concepts & Fundamentals",
   "description": "Deep dive into the foundational concepts that underpin the entire course. We'll explore key principles, best practices, and real-world applications.",
-  "order": 2,
-  "durationMinutes": 120,
   "contentFiles": {
-    "preClass": "pre-class.mdx",
-    "liveClass": "live-class.mdx",
-    "postClass": "post-class.mdx",
-    "instructorNotes": "instructor-notes.mdx"
+    "preClass": "pre-class/README.mdx",
+    "liveClass": "live-class/README.mdx",
+    "postClass": "post-class/README.mdx",
+    "instructorNotes": "instructor-notes/README.mdx"
   },
   "slides": [
-    { "slug": "foundations", "file": "01-foundations.mdx", "order": 1 },
-    { "slug": "principles", "file": "02-principles.mdx", "order": 2 },
-    { "slug": "patterns", "file": "03-patterns.mdx", "order": 3 },
-    {
-      "slug": "bestpractices",
-      "file": "04-best-practices.mdx",
-      "order": 4
-    },
-    { "slug": "case-studies", "file": "05-case-studies.mdx", "order": 5 }
+    { "slug": "foundations", "file": "01-foundations.mdx" },
+    { "slug": "principles", "file": "02-principles.mdx" },
+    { "slug": "patterns", "file": "03-patterns.mdx" },
+    { "slug": "bestpractices", "file": "04-best-practices.mdx" },
+    { "slug": "case-studies", "file": "05-case-studies.mdx" }
   ],
   "assets": "assets/",
   "questionReferences": [
@@ -70,16 +62,9 @@
   "assignmentReference": {
     "id": "A_MODULE1_001",
     "title": "Build Your First Application",
-    "description": "Apply the core concepts learned in lessons 1-2 to build a complete application.",
-    "dueAfterDays": 7,
-    "estimatedMinutes": 180
+    "description": "Apply the core concepts learned in lessons 1-2 to build a complete application."
   },
   "surpriseAssignment": false,
-  "estimatedStudyTime": {
-    "preClass": 40,
-    "liveClass": 60,
-    "postClass": 20
-  },
   "learningObjectives": [
     "Understand the foundational concepts and terminology",
     "Apply core principles to solve real-world problems",

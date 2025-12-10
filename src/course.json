@@ -1,6 +1,4 @@
 {
-  "schemaVersion": "1.0.0",
-  "slug": "sample-course",
   "title": "Sample Course - Getting Started",
   "description": "A comprehensive example demonstrating the hybrid content + DB questions model.",
   "instructor": {

@@ -1,20 +1,16 @@
 {
-  "schemaVersion": "1.0.0",
-  "slug": "introduction",
   "title": "Introduction & Course Overview",
   "description": "Welcome to the course. Learn what we'll cover, how the course is structured, and what to expect.",
-  "order": 1,
-  "durationMinutes": 60,
   "contentFiles": {
-    "preClass": "pre-class.mdx",
-    "liveClass": "live-class.mdx",
-    "postClass": "post-class.mdx",
-    "instructorNotes": "instructor-notes.mdx"
+    "preClass": "pre-class/README.mdx",
+    "liveClass": "live-class/README.mdx",
+    "postClass": "post-class/README.mdx",
+    "instructorNotes": "instructor-notes/README.mdx"
   },
   "slides": [
-    { "slug": "welcome", "file": "welcome.mdx", "order": 1 },
-    { "slug": "core-concept", "file": "core-concept.mdx", "order": 2 },
-    { "slug": "expectations", "file": "expectations.mdx", "order": 3 }
+    { "slug": "welcome", "file": "welcome.mdx" },
+    { "slug": "core-concept", "file": "core-concept.mdx" },
+    { "slug": "expectations", "file": "expectations.mdx" }
   ],
   "assets": "assets/",
   "questionReferences": [
@@ -44,7 +40,6 @@
     }
   ],
   "surpriseAssignment": false,
-  "estimatedStudyTime": { "preClass": 20, "liveClass": 30, "postClass": 10 },
   "learningObjectives": [
     "Understand the course structure and expectations",
     "Set up the development environment",

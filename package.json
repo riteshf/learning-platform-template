@@ -2,7 +2,7 @@
   "name": "learning-content-template",
   "version": "1.0.0",
   "private": true,
-  "description": "Lean, production-grade template for Git-based course content with runtime-injected questions and assignments.",
+  "description": "Lean, production-grade template for Git-based course content with runtime-injected questions.",
   "keywords": ["learning", "course", "template", "hybrid-model", "mdx", "validation"],
   "author": "Learning Platform Team",
   "license": "MIT",

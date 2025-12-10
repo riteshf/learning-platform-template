@@ -19,7 +19,6 @@ const courseSchema = z
     summary: z.string().min(1),
     level: z.enum(["beginner", "intermediate", "advanced"]),
     category: z.string().min(1),
-    status: z.enum(["draft", "published"]).default("draft"),
     tags: z.array(z.string().min(1)).default([]),
     instructors: z
       .array(

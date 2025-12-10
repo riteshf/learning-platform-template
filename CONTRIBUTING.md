@@ -19,7 +19,7 @@ Be respectful, inclusive, and collaborative.
 2. **Update `_meta.json`**: Add your lesson slug to `lessonOrder`
 3. **Edit `lesson.json`**: Update title, summary, objectives, duration, tags, slides
 4. **Create MDX files**: Edit pre-class, live-class, post-class, instructor-notes
-5. **Embed questions/assignments**: Use `<!-- question:db:Q_YOUR_001 -->` and `<!-- assignment:db:A_YOUR_001 -->`
+5. **Embed questions**: Use `<!-- question:db:Q_YOUR_001 -->`
 6. **Validate**: `npm run validate`
 7. **Submit PR** for review
 
@@ -29,7 +29,7 @@ Be respectful, inclusive, and collaborative.
 - [ ] Slides listed in `lesson.json` exist in `slides/` directory
 - [ ] No duplicate slide filenames
 - [ ] Instructor notes set `visibility: "instructor"`
-- [ ] Question/assignment IDs follow patterns: `Q_[COURSECODE]_###`, `A_[COURSECODE]_###`
+- [ ] Question IDs follow patterns: `Q_[COURSECODE]_###`
 - [ ] `npm run validate` passes without errors
 
 ## Validation
@@ -54,17 +54,17 @@ Checks performed:
 - Keep sections concise and scannable
 - Use clear headings and bullet points
 - Link to external resources, don't duplicate content
-- Embed questions/assignments as HTML comments
+- Embed questions as HTML comments
 
 **JSON Files:**
-- Use lowercase strings for simple fields (category, status)
+- Use lowercase strings for simple fields (category)
 - Keep objectives focused (3–5 per lesson)
 - List only the slides you'll actively use
 - Use descriptive, short titles and summaries
 
-**Question/Assignment IDs:**
-- Format: `Q_[LESSONCODE]_###` or `A_[LESSONCODE]_###`
-- Example: `Q_INTRO_001`, `A_CC_002`
+**Question IDs:**
+- Format: `Q_[LESSONCODE]_###` 
+- Example: `Q_INTRO_001`
 
 ## Questions?
 

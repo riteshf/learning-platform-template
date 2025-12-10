@@ -1,11 +1,11 @@
 # Learning Content Template
 
-Lean, template for Git-based course content with runtime-injected questions and assignments. Questions are not stored here—they're managed in your backend and injected at runtime via IDs.
+Lean, template for Git-based course content with runtime-injected questions. Questions are not stored here—they're managed in your backend and injected at runtime via IDs.
 
 ## Why this template?
 
 - **Git-friendly**: No merge conflicts over questions. Content stays small and focused.
-- **Runtime-driven**: Questions/assignments managed centrally by your platform backend.
+- **Runtime-driven**: Questions managed centrally by your platform backend.
 - **Easy to fork**: Instructors copy, rename, and customize for their own courses.
 - **Validated**: Built-in schema validation ensures consistency.
 - **Role-aware**: Instructor notes are Git-versioned but role-protected at runtime.
@@ -42,7 +42,6 @@ src/
   "summary": "A lean starter that shows how to mix Git-based content with runtime questions.",
   "level": "beginner",
   "category": "development",
-  "status": "draft",
   "tags": ["template", "hybrid"],
   "instructors": [
     { "name": "John Doe", "email": "instructor@example.com" }
@@ -67,12 +66,12 @@ src/
 }
 ```
 
-Defaults: content files are always `pre-class/README.mdx`, `live-class/README.mdx`, `post-class/README.mdx`, `instructor-notes/README.mdx`. Slides are optional; list filenames to enforce order. **All questions and assignments live inside MDX via comments** like `<!-- question:db:Q_SOMETHING_001 -->` or `<!-- assignment:db:A_SOMETHING_001 -->` and are injected at runtime from the backend.
+Defaults: content files are always `pre-class/README.mdx`, `live-class/README.mdx`, `post-class/README.mdx`, `instructor-notes/README.mdx`. Slides are optional; list filenames to enforce order. **All questions live inside MDX via comments** like `<!-- question:db:Q_SOMETHING_001 -->` and are injected at runtime from the backend.
 
 ## MDX pages
 - Use frontmatter `visibility: "public"` for learner-facing pages.
 - Instructor notes must set `visibility: "instructor"`.
-- Reference questions with `<!-- question:db:Q_SOMETHING_001 -->` and assignments with `<!-- assignment:db:A_SOMETHING_001 -->`.
+- Reference questions with `<!-- question:db:Q_SOMETHING_001 -->`.
 - The platform renders them at runtime from your backend.
 
 Phases per lesson:

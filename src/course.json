@@ -8,8 +8,8 @@
   "instructors": [
     {
       "name": "John Doe",
-      "email": "instructor@example.com",
-      "role": "lead"
+      "email": "instructor@example.com"
     }
-  ]
+  ],
+  "lessonOrder": ["introduction", "core-concepts"]
 }

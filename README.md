@@ -11,8 +11,7 @@ Lean, template for Git-based course content with runtime-injected questions and 
 - **Role-aware**: Instructor notes are Git-versioned but role-protected at runtime.
 
 ## Quick start
-- Update `src/course.json` with your course meta.
-- Set lesson order in `src/_meta.json`.
+- Update `src/course.json` with your course meta and lesson order.
 - Copy `src/lessons/introduction` as a starter and rename the folder.
 - Edit the four MDX files (pre, live, post, instructor notes).
 - Reference question IDs where needed; the platform supplies the questions at runtime.
@@ -22,7 +21,6 @@ Lean, template for Git-based course content with runtime-injected questions and 
 ```
 src/
 ├── course.json
-├── _meta.json
 └── lessons/
     └── your-lesson/
         ├── lesson.json
@@ -47,14 +45,10 @@ src/
   "status": "draft",
   "tags": ["template", "hybrid"],
   "instructors": [
-    { "name": "John Doe", "email": "instructor@example.com", "role": "lead" }
-  ]
+    { "name": "John Doe", "email": "instructor@example.com" }
+  ],
+  "lessonOrder": ["introduction", "core-concepts"]
 }
-```
-
-`_meta.json` (order only)
-```json
-{ "lessonOrder": ["introduction", "core-concepts"] }
 ```
 
 `lesson.json` (one per lesson)

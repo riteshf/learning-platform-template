@@ -4,7 +4,6 @@ import matter from "gray-matter";
 import { z } from "zod";
 
 const COURSE_FILE = "course.json";
-const META_FILE = "_meta.json";
 const LESSONS_DIR = "lessons";
 
 const CONTENT_FILES = {
@@ -27,16 +26,14 @@ const courseSchema = z
         z.object({
           name: z.string().min(1),
           email: z.string().email().optional(),
-          role: z.string().optional(),
         })
       )
       .min(1),
+    lessonOrder: z.array(z.string().min(1)),
   })
   .passthrough();
 
-const metaSchema = z.object({
-  lessonOrder: z.array(z.string().min(1)),
-});
+
 
 const lessonSchema = z
   .object({
@@ -66,15 +63,10 @@ function readJson(filePath: string) {
 
 function validateCourse(courseDir: string, ctx: ErrorCollector) {
   const courseFile = path.join(courseDir, COURSE_FILE);
-  const metaFile = path.join(courseDir, META_FILE);
   const lessonsDir = path.join(courseDir, LESSONS_DIR);
 
   if (!fs.existsSync(courseFile)) {
     ctx.errors.push(`${courseFile}: missing`);
-    return;
-  }
-  if (!fs.existsSync(metaFile)) {
-    ctx.errors.push(`${metaFile}: missing`);
     return;
   }
   if (!fs.existsSync(lessonsDir)) {
@@ -82,20 +74,21 @@ function validateCourse(courseDir: string, ctx: ErrorCollector) {
     return;
   }
 
+  let course;
   try {
-    const course = courseSchema.safeParse(readJson(courseFile));
-    if (!course.success) ctx.errors.push(`${courseFile}: ${course.error.message}`);
+    const courseData = courseSchema.safeParse(readJson(courseFile));
+    if (!courseData.success) {
+      ctx.errors.push(`${courseFile}: ${courseData.error.message}`);
+      return;
+    }
+    course = courseData.data;
   } catch (e) {
     ctx.errors.push(`${courseFile}: ${String(e)}`);
     return;
   }
 
   try {
-    const meta = metaSchema.safeParse(readJson(metaFile));
-    if (!meta.success) ctx.errors.push(`${metaFile}: ${meta.error.message}`);
-    if (!meta.success) return;
-
-    const lessonOrder = meta.data.lessonOrder;
+    const lessonOrder = course.lessonOrder;
     const lessonDirs = fs
       .readdirSync(lessonsDir, { withFileTypes: true })
       .filter((d) => d.isDirectory())
@@ -108,25 +101,25 @@ function validateCourse(courseDir: string, ctx: ErrorCollector) {
       seen.add(slug);
     });
     duplicates.forEach((dup) =>
-      ctx.errors.push(`${metaFile}: duplicate lesson '${dup}'`)
+      ctx.errors.push(`${courseFile}: duplicate lesson '${dup}'`)
     );
 
     lessonDirs.forEach((dir) => {
       if (!lessonOrder.includes(dir)) {
-        ctx.errors.push(`${metaFile}: lessonOrder missing '${dir}'`);
+        ctx.errors.push(`${courseFile}: lessonOrder missing '${dir}'`);
       }
     });
 
     lessonOrder.forEach((slug) => {
       const lessonPath = path.join(lessonsDir, slug);
       if (!fs.existsSync(lessonPath)) {
-        ctx.errors.push(`${metaFile}: lesson '${slug}' folder missing`);
+        ctx.errors.push(`${courseFile}: lesson '${slug}' folder missing`);
         return;
       }
       validateLesson(lessonPath, ctx);
     });
   } catch (e) {
-    ctx.errors.push(`${metaFile}: ${String(e)}`);
+    ctx.errors.push(`${courseFile}: ${String(e)}`);
   }
 }
 

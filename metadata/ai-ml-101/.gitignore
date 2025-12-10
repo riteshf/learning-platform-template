@@ -1,0 +1,70 @@
+# Instructor Notes (should not be shared with students)
+**/instructor-notes/
+instructor-notes/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# API Keys (if any)
+*.key
+secrets.json
+
+# Data files (large)
+*.csv
+*.xlsx
+*.parquet
+*.db
+*.sqlite
+*.sqlite3
+data/*.csv
+data/*.xlsx
+
+# Models (large)
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+models/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+

@@ -1,6 +1,6 @@
 {
   "title": "Sample Course - Getting Started",
-  "summary": "A lean starter that shows how to mix Git-based content with runtime questions.",
+  "description": "A lean starter that shows how to mix Git-based content with runtime questions.",
   "level": "beginner",
   "category": "development",
   "tags": ["template", "hybrid"],

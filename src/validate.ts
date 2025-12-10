@@ -16,7 +16,7 @@ const CONTENT_FILES = {
 const courseSchema = z
   .object({
     title: z.string().min(1),
-    summary: z.string().min(1),
+    description: z.string().min(1),
     level: z.enum(["beginner", "intermediate", "advanced"]),
     category: z.string().min(1),
     tags: z.array(z.string().min(1)).default([]),
@@ -37,7 +37,7 @@ const courseSchema = z
 const lessonSchema = z
   .object({
     title: z.string().min(1),
-    summary: z.string().min(1),
+    description: z.string().min(1),
     objectives: z.array(z.string().min(1)).default([]),
     durationMinutes: z.number().int().positive().optional(),
     tags: z.array(z.string().min(1)).default([]),

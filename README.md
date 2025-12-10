@@ -39,7 +39,7 @@ src/
 ```json
 {
   "title": "Sample Course - Getting Started",
-  "summary": "A lean starter that shows how to mix Git-based content with runtime questions.",
+  "description": "A lean starter that shows how to mix Git-based content with runtime questions.",
   "level": "beginner",
   "category": "development",
   "tags": ["template", "hybrid"],
@@ -54,7 +54,7 @@ src/
 ```json
 {
   "title": "Introduction & Course Overview",
-  "summary": "What to expect, how to navigate this course, and how questions flow across phases.",
+  "description": "What to expect, how to navigate this course, and how questions flow across phases.",
   "objectives": [
     "Understand the pre/live/post rhythm",
     "Confirm local setup before live class",

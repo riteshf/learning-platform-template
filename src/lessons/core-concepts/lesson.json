@@ -1,6 +1,6 @@
 {
   "title": "Core Concepts & Fundamentals",
-  "summary": "Deep dive into the principles, patterns, and practices you will reuse in every lesson.",
+  "description": "Deep dive into the principles, patterns, and practices you will reuse in every lesson.",
   "objectives": [
     "Connect core principles to practical decisions",
     "Recognize patterns in real code",

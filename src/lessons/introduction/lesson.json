@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "introduction",
+  "title": "Introduction & Course Overview",
+  "description": "Welcome to the course. Learn what we'll cover, how the course is structured, and what to expect.",
+  "order": 1,
+  "durationMinutes": 60,
+  "contentFiles": {
+    "preClass": "pre-class.mdx",
+    "liveClass": "live-class.mdx",
+    "postClass": "post-class.mdx",
+    "instructorNotes": "instructor-notes.mdx"
+  },
+  "slides": [
+    { "slug": "welcome", "file": "welcome.mdx", "order": 1 },
+    { "slug": "core-concept", "file": "core-concept.mdx", "order": 2 },
+    { "slug": "expectations", "file": "expectations.mdx", "order": 3 }
+  ],
+  "assets": "assets/",
+  "questionReferences": [
+    {
+      "id": "Q_INTRO_001",
+      "type": "CHECKLIST",
+      "phase": "pre",
+      "context": "Pre-class setup verification checklist"
+    },
+    {
+      "id": "Q_INTRO_002",
+      "type": "POLL",
+      "phase": "live",
+      "context": "Poll: What's your experience level?"
+    },
+    {
+      "id": "Q_INTRO_003",
+      "type": "QUIZ",
+      "phase": "post",
+      "context": "Assessment: Course overview understanding (MCQ)"
+    },
+    {
+      "id": "Q_INTRO_004",
+      "type": "TEXT",
+      "phase": "post",
+      "context": "Reflection: Your learning goals (short answer)"
+    }
+  ],
+  "surpriseAssignment": false,
+  "estimatedStudyTime": { "preClass": 20, "liveClass": 30, "postClass": 10 },
+  "learningObjectives": [
+    "Understand the course structure and expectations",
+    "Set up the development environment",
+    "Navigate the learning platform",
+    "Identify resources for getting help"
+  ],
+  "difficulty": "beginner"
+}

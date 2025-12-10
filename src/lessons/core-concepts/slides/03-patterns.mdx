@@ -1,0 +1,70 @@
+---
+schemaVersion: "1.0.0"
+slug: "patterns"
+title: "Slide 3: Design Patterns"
+type: "content"
+order: 3
+durationMinutes: 12
+visibility: "public"
+---
+
+# Slide 3: Design Patterns
+
+## Proven Solutions to Common Problems
+
+A design pattern is a reusable solution to a common problem in a given context.
+
+### Pattern Categories
+
+**Creational Patterns** (How to create objects)
+
+- Singleton: Ensure only one instance exists
+- Factory: Create objects without specifying classes
+- Builder: Construct complex objects step-by-step
+
+**Structural Patterns** (How to compose objects)
+
+- Adapter: Make incompatible interfaces compatible
+- Facade: Provide simplified interface to complex system
+- Proxy: Provide a placeholder for another object
+
+**Behavioral Patterns** (How objects interact)
+
+- Observer: Notify multiple objects of state changes
+- Strategy: Encapsulate algorithm families
+- State: Allow objects to change behavior when state changes
+
+### Pattern Recognition Exercise
+
+Can you identify the pattern in this pseudocode?
+
+```
+User registers for course
+    → Notification system alerted
+    → Email sent
+    → SMS sent
+    → Analytics updated
+    → Dashboard updated
+```
+
+**Pattern**: **Observer** - One object (registration event) triggers multiple listeners.
+
+### Anti-Patterns: Patterns to Avoid
+
+- **God Object**: One class doing everything
+- **Spaghetti Code**: Complex, tangled dependencies
+- **Copy-Paste Code**: DRY violation (Don't Repeat Yourself)
+- **Premature Optimization**: Optimizing before measuring
+
+## Real-World Pattern Usage
+
+| Pattern   | Real-World Example       | Why It Works                        |
+| --------- | ------------------------ | ----------------------------------- |
+| Singleton | Database connection pool | Only one needed, shared access      |
+| Factory   | UI framework buttons     | Create different types uniformly    |
+| Observer  | Event listeners          | Decouple event source from handlers |
+| Strategy  | Payment methods          | Switch algorithms at runtime        |
+
+---
+
+_Patterns are about proven solutions, not clever tricks._

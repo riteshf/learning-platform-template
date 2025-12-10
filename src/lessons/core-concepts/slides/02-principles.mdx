@@ -1,0 +1,80 @@
+---
+schemaVersion: "1.0.0"
+slug: "principles"
+title: "Slide 2: Core Principles"
+type: "content"
+order: 2
+durationMinutes: 15
+visibility: "public"
+---
+
+# Slide 2: Core Principles
+
+## The Five Pillars
+
+### 1. **Abstraction**
+
+**Hide complexity, show simplicity**
+
+- Users interact with interfaces, not internals
+- Good abstraction reveals intent
+- Bad abstraction obscures understanding
+
+Example: Your car's steering wheel is an abstraction. You don't think about hydraulics.
+
+### 2. **Modularity**
+
+**Build systems from independent parts**
+
+- Each module has a single, clear purpose
+- Modules should be loosely coupled
+- Easy to test, replace, or upgrade individual modules
+
+Example: LEGO bricks. Each brick is independent and connects easily.
+
+### 3. **Composition**
+
+**Build complex behavior from simple building blocks**
+
+- Many small pieces combined create sophistication
+- Easier to understand and maintain
+- More flexible than monolithic approaches
+
+### 4. **Encapsulation**
+
+**Bundle data with the operations that use it**
+
+- Information hiding: internal state is private
+- External interface: what others can call
+- Change internals without breaking external contracts
+
+### 5. **Scalability**
+
+**Design for growth without redesign**
+
+- Horizontal scaling: add more machines
+- Vertical scaling: add more power to existing machines
+- Database design for billions of records
+- APIs that grow with usage
+
+## How Principles Relate
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   System Architecture                    │
+├─────────────────────────────────────────────────────────┤
+│  Scalability (grows efficiently)                        │
+│     ↓ enabled by                                        │
+│  Modularity (independent components)                    │
+│     ↓ achieved through                                  │
+│  Encapsulation (hidden details)                         │
+│     ↓ powered by                                        │
+│  Abstraction (simple interfaces)                        │
+│     ↓ composed of                                       │
+│  Composition (small building blocks)                    │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+_"The best code is not clever code. It's clear code."_ — Anonymous

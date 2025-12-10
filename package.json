@@ -1,26 +1,17 @@
 {
   "name": "course-content-template",
   "version": "1.0.0",
-  "description": "Template repository for course content with multi-language support",
-  "main": "index.js",
+  "private": true,
+  "description": "Single-language course content template with validation",
   "scripts": {
-    "validate": "ts-node validation/validate-all.ts",
-    "validate:course": "ts-node validation/validate-course.ts",
-    "validate:lessons": "ts-node validation/validate-lesson.ts",
-    "validate:slides": "ts-node validation/validate-slide.ts",
-    "validate:questions": "ts-node validation/validate-question.ts"
+    "validate": "ts-node src/validate.ts"
   },
-  "keywords": [
-    "course",
-    "content",
-    "education",
-    "i18n"
-  ],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "ts-node": "^10.9.0",
-    "typescript": "^5.0.0"
+    "@types/node": "^20.10.0",
+    "gray-matter": "^4.0.3",
+    "glob": "^10.3.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
   }
 }

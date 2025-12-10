@@ -1,0 +1,256 @@
+---
+schemaVersion: "1.0.0"
+visibility: "instructor"
+title: "Instructor Notes: Core Concepts Lesson"
+order: 0
+---
+
+## Instructor Notes: Core Concepts Lesson
+
+**Created**: January 2025  
+**Last Updated**: January 10, 2025  
+**Duration**: 60 minutes (live session)
+
+---
+
+## 📋 Lesson Overview
+
+This is the second lesson of the course, building on the introduction. The goal is to:
+
+- Establish deep understanding of core principles
+- Show how principles guide design decisions
+- Demonstrate real-world applications
+- Build confidence in applying concepts
+
+## 🎯 Key Teaching Points
+
+1. **The Five Pillars**
+   - Start with everyday examples (car, LEGO, etc.)
+   - Show how each principle solves real problems
+   - Explain why ignoring them causes issues
+
+2. **Design Patterns as Solutions**
+   - Patterns aren't about being clever
+   - Patterns represent collective wisdom
+   - Right pattern for right situation
+
+3. **Principles Over Rules**
+   - SOLID principles guide decision-making
+   - They're not dogma, use judgment
+   - Context matters
+
+## ⏱️ Timing Breakdown (60 min)
+
+- **0-5 min**: Welcome & recap of introduction
+  - Quick poll on pre-class comprehension
+  - Set expectations for today's depth
+
+- **5-20 min**: Foundations & Principles (Slides 1-2)
+  - Live coding example: Show bad vs good abstraction
+  - Interactive: "Spot the principle" exercise
+  - Pause for Q&A
+
+- **20-35 min**: Patterns (Slide 3)
+  - Present 3 common patterns with real examples
+  - Live poll: Q_CC_002 - Which principle matters most?
+  - Discuss responses and why
+
+- **35-50 min**: Best Practices & Patterns (Slides 4-5)
+  - Walk through code review checklist
+  - Present case studies (2-3 stories)
+  - Discussion: What would you have done differently?
+
+- **50-60 min**: Assessment & Q&A
+  - Q_CC_003 - Pattern recognition quiz
+  - Open discussion on real projects
+  - Reminder about post-class assignment
+
+## 💡 Instructor Tips
+
+### Engagement Strategies
+
+- **Use analogies**: "Abstraction is like a remote control..."
+- **Live coding**: Nothing beats watching code come alive
+- **Polling**: Keep people engaged (Q_CC_002)
+- **Stories**: Share your own experiences with these principles
+- **Mistakes**: Talk about times you violated these principles and learned
+
+### Code Examples You'll Need
+
+Prepare these live coding examples:
+
+1. **Abstraction Example** (5 min)
+   - Bad: Expose all internal details
+   - Good: Clean interface
+   - Show the difference in usability
+
+2. **Pattern Example** (5 min)
+   - Show code that needs a pattern
+   - Refactor to use the pattern
+   - Discuss pros/cons
+
+3. **SOLID Violation** (5 min)
+   - Show a God Object
+   - Refactor to follow Single Responsibility
+   - Measure improvement
+
+### Handling Questions
+
+| Question                       | Answer Strategy                       |
+| ------------------------------ | ------------------------------------- |
+| "Isn't this over-engineering?" | Agree! Show the cost of not doing it. |
+| "When do I NOT use patterns?"  | Great question. Discuss trade-offs.   |
+| "Can I mix patterns?"          | Yes, often necessary. Show example.   |
+| "How do I know which is best?" | Experience + specific context.        |
+
+## 📊 Assessment Strategy
+
+### Q_CC_001 (Pre-class Checklist)
+
+- Verify understanding of terminology
+- Identify learners struggling with definitions
+- Allocate extra 5 min if >30% score <70%
+
+### Q_CC_002 (Live Poll)
+
+- Gauge which principle resonates most
+- Use responses to personalize examples
+- "60% of you care most about X, let me show why..."
+
+### Q_CC_003 (Pattern Recognition)
+
+- Hands-on assessment during live session
+- Good indicator of comprehension
+- Review wrong answers to improve teaching
+
+### Q_CC_004 (Post-class Quiz)
+
+- 10 questions, mix conceptual and applied
+- Target pass rate: 85%+
+- Review failures to identify gaps
+
+### Q_CC_005 (Real-World Assignment)
+
+- Open-ended scenario
+- Learners propose solutions
+- Grade on reasoning + correctness
+
+## 🔄 Common Misconceptions
+
+| Misconception                       | Reality                                                 |
+| ----------------------------------- | ------------------------------------------------------- |
+| "More abstraction is always better" | Abstraction hides complexity. Too much and it confuses. |
+| "You must use all SOLID principles" | Use them where they help. Context matters.              |
+| "Patterns are required"             | Patterns are tools. Use them when appropriate.          |
+| "Security is an afterthought"       | Security must be foundational.                          |
+
+## 💻 Demo Code Snippets
+
+Keep these ready to paste in your IDE:
+
+```typescript
+// Abstraction Example - Bad
+class Car {
+  private pistons = 1000;
+  private cylinders = 4;
+  private fuel = 50;
+
+  public drive() {
+    // User has to understand internals!
+  }
+}
+
+// Abstraction Example - Good
+class Car {
+  public drive() {
+    // User just calls drive()
+  }
+}
+```
+
+## 📋 Lesson Checklist
+
+### Before Live Session (Day Before)
+
+- [ ] Practice live coding demos 2-3 times
+- [ ] Prepare slides (dry run through all 5)
+- [ ] Test code examples in IDE
+- [ ] Prepare poll questions backup
+- [ ] Plan icebreaker or story to tell
+- [ ] Check student pre-class completion rates
+- [ ] Send reminder email
+
+### During Live Session
+
+- [ ] Start 5 min early for tech checks
+- [ ] Share agenda at the start
+- [ ] Use screen sharing + webcam
+- [ ] Paste code examples clearly
+- [ ] Monitor chat for questions
+- [ ] Call on participants for engagement
+- [ ] Record the entire session
+- [ ] Watch timing (stay on schedule)
+
+### After Live Session
+
+- [ ] Compile Q&A transcript
+- [ ] Share slides + code examples
+- [ ] Highlight best student answers (anonymized)
+- [ ] Share recording within 24 hours
+- [ ] Add captions within 48 hours
+- [ ] Review Q_CC_003 results
+- [ ] Note what worked/didn't for next time
+
+## 🎬 Recording & Distribution
+
+- **Format**: Full video + slides overlay
+- **Length**: ~50 min edited (remove dead air)
+- **Captions**: Essential for accessibility
+- **Audio**: Watch for echo/background noise
+- **Video Quality**: 1080p preferred, 720p minimum
+
+## 📞 Office Hours Prep
+
+Likely office hours questions:
+
+- "How do I convince my team to follow SOLID?"
+- "What if the codebase doesn't allow patterns?"
+- "How do I refactor existing code?"
+- "When is it okay to take shortcuts?"
+
+## 🔗 Related Resources
+
+- **Pre-class**: pre-class.mdx (Definitions + terminology)
+- **Live class**: live-class.mdx (This lecture)
+- **Post-class**: post-class.mdx (Assignments)
+- **Slides**: 5 slides covering foundations → case studies
+- **Questions**:
+  - Q_CC_001 (Pre-class checklist)
+  - Q_CC_002 (Live poll - principle preference)
+  - Q_CC_003 (Pattern recognition)
+  - Q_CC_004 (Post-class quiz)
+  - Q_CC_005 (Real-world assignment)
+
+## ✨ Success Indicators
+
+This lesson is working if:
+
+- ✅ >70% attend live session
+- ✅ >75% pass Q_CC_004 (post-class quiz)
+- ✅ Q_CC_005 shows thoughtful problem-solving
+- ✅ Forum discussions mention applying concepts
+- ✅ Next lesson builds on these concepts naturally
+
+## 📈 Iteration Notes
+
+After teaching this lesson, document:
+
+- Which examples resonated most?
+- Which concepts confused learners?
+- Which timing worked/didn't?
+- What would you change for next cohort?
+- How can you better connect to learner experience?
+
+---
+
+**Good luck teaching! Your passion for these concepts will inspire learners.**

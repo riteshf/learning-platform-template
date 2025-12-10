@@ -1,0 +1,29 @@
+# Asset Library
+
+This folder contains all supporting assets for the Core Concepts lesson.
+
+## File Types Included
+
+- **Images**: PNG, SVG diagrams
+- **Documents**: PDFs, checklists
+- **Data**: JSON datasets for examples
+- **Code**: Runnable examples (see external repo)
+
+## Current Assets
+
+Currently empty. Add assets as needed:
+
+- Diagrams explaining principles
+- Comparison charts
+- Real-world architecture diagrams
+- Code snippets (though linked externally)
+- Workshop materials
+- Handouts
+
+## Guidelines
+
+- Use descriptive names
+- Keep files under 5MB
+- Prefer SVG for diagrams (scalable)
+- Document purpose of each asset
+- Update this README when adding assets

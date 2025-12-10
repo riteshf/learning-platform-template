@@ -1,0 +1,113 @@
+---
+schemaVersion: "1.0.0"
+slug: "bestpractices"
+title: "Slide 4: Best Practices"
+type: "content"
+order: 4
+durationMinutes: 12
+visibility: "public"
+---
+
+# Slide 4: Best Practices
+
+## Industry-Tested Wisdom
+
+Best practices emerge from collective experience across many projects and years.
+
+### 1. **Write Readable Code**
+
+```javascript
+// ❌ Clever but confusing
+const r = a
+  .filter((x) => x > 0)
+  .map((x) => x * 2)
+  .reduce((a, b) => a + b, 0);
+
+// ✅ Clear and maintainable
+const positiveNumbers = numbers.filter((num) => num > 0);
+const doubled = positiveNumbers.map((num) => num * 2);
+const sum = doubled.reduce((total, num) => total + num, 0);
+```
+
+**Why**: You'll spend more time reading code than writing it.
+
+### 2. **Follow SOLID Principles**
+
+- **S**ingle Responsibility: One class, one reason to change
+- **O**pen/Closed: Open for extension, closed for modification
+- **L**iskov Substitution: Subtypes should be substitutable
+- **I**nterface Segregation: Many specific interfaces > one general
+- **D**ependency Inversion: Depend on abstractions, not concretions
+
+### 3. **DRY: Don't Repeat Yourself**
+
+```javascript
+// ❌ Repeated code
+function getUserData(id) {
+  /* ... */
+}
+function getAdminData(id) {
+  /* ... */
+}
+function getModeratorData(id) {
+  /* ... */
+}
+
+// ✅ Extracted common logic
+function getUserData(id, role) {
+  /* ... */
+}
+```
+
+### 4. **Test Your Code**
+
+- Unit tests: Test individual functions
+- Integration tests: Test components working together
+- End-to-end tests: Test full user workflows
+- Aim for 70%+ code coverage
+
+### 5. **Document Your Code**
+
+- Why decisions were made (comments)
+- How to use your code (docstrings/JSDoc)
+- Complex algorithms need explanation
+- Keep docs in sync with code
+
+### 6. **Version Control Wisely**
+
+- Meaningful commit messages
+- Small, focused commits
+- Feature branches before merging
+- Pull request reviews
+
+### 7. **Performance Matters**
+
+- Measure before optimizing
+- Identify bottlenecks
+- Profile your code
+- Balance optimization with readability
+
+### 8. **Security First**
+
+- Validate all inputs
+- Encrypt sensitive data
+- Use established libraries
+- Keep dependencies updated
+- Regular security audits
+
+## Checklist for Code Review
+
+Before submitting code:
+
+- [ ] Does it follow the project's style guide?
+- [ ] Is it readable and well-commented?
+- [ ] Have I written tests?
+- [ ] Does it handle edge cases?
+- [ ] Is performance acceptable?
+- [ ] Have I considered security?
+- [ ] Is it DRY (not repeated)?
+- [ ] Does it follow SOLID principles?
+
+---
+
+_Best practices are not rules. They're guidelines informed by experience. Know when to break them._

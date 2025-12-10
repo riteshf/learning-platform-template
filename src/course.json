@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "sample-course",
+  "title": "Sample Course - Getting Started",
+  "description": "A comprehensive example demonstrating the hybrid content + DB questions model.",
+  "instructor": {
+    "name": "John Doe",
+    "email": "instructor@example.com",
+    "bio": "Experienced instructor with 10+ years in the field"
+  },
+  "tags": ["foundations", "sample", "beginner-friendly"],
+  "level": "beginner",
+  "estimatedMinutes": 240,
+  "estimatedLessons": 2,
+  "category": "DEVELOPMENT",
+  "publishStatus": "draft",
+  "contentStructure": "hybrid",
+  "contentNotes": "This template uses a hybrid approach: content is in Markdown/JSON, while questions are managed in the database and referenced by ID."
+}

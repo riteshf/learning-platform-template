@@ -1,0 +1,125 @@
+---
+schemaVersion: "1.0.0"
+slug: "case-studies"
+title: "Slide 5: Real-World Case Studies"
+type: "content"
+order: 5
+durationMinutes: 11
+visibility: "public"
+---
+
+# Slide 5: Real-World Case Studies
+
+## Learning From Others' Successes (and Failures)
+
+### Case Study 1: Microservices Migration
+
+**Company**: A major e-commerce platform  
+**Challenge**: Monolithic architecture couldn't scale to handle peak traffic
+
+**Solution Applied**:
+
+- **Modularity**: Break monolith into independent services
+- **Scalability**: Scale individual services independently
+- **Encapsulation**: Each service has its own database
+
+**Results**:
+
+- ✅ Handled 10x traffic spike during Black Friday
+- ✅ Reduced deployment time from weeks to hours
+- ✅ Teams could develop independently
+
+**Lessons**:
+
+- "Modularity is about organizational structure, not just code"
+- "Composition of services requires strong interfaces"
+- "Monitoring becomes critical with distributed systems"
+
+---
+
+### Case Study 2: Legacy Code Modernization
+
+**Company**: Financial services firm  
+**Challenge**: 20-year-old codebase, impossible to add features
+
+**Problem**: Violated SOLID principles, massive God Objects
+
+**Solution**:
+
+- Applied Design Patterns incrementally
+- Wrote tests as safety net
+- Refactored in small steps
+- **Abstraction**: Created clean interfaces between old and new code
+
+**Results**:
+
+- ✅ Maintained system stability while improving
+- ✅ New features took 50% less time
+- ✅ Team morale improved
+
+**Lessons**:
+
+- "You don't need to rewrite everything. Refactor incrementally."
+- "Tests give you courage to change legacy code"
+- "Interfaces are your friend when integrating old and new"
+
+---
+
+### Case Study 3: Startup That Failed to Scale
+
+**Company**: A promising SaaS startup  
+**Issue**: Code worked great with 100 users, broke with 10,000
+
+**Root Cause**: Ignored scalability principle early on
+
+- Single database couldn't handle load
+- No caching strategy
+- Inefficient algorithms for large datasets
+
+**Lesson**: "Don't optimize for scale before you need it, but design for it from day one"
+
+**What They Should Have Done**:
+
+- [ ] Design database schema for growth
+- [ ] Plan for caching early
+- [ ] Profile and test with realistic data volumes
+- [ ] Choose frameworks that support scale
+
+---
+
+### Case Study 4: Security Breach
+
+**Company**: Social media platform  
+**Incident**: User data leaked
+
+**Root Cause**:
+
+- Violated encapsulation (exposed raw database)
+- No input validation
+- Ignored security best practices
+
+**Response**:
+
+- Implemented strict access controls
+- Added input validation everywhere
+- Regular security audits
+- Bug bounty program
+
+**Lesson**: "Security is not a feature. It's a foundation."
+
+---
+
+## Key Takeaways From Real World
+
+| Principle   | Real Impact            | Cost of Ignoring          |
+| ----------- | ---------------------- | ------------------------- |
+| Modularity  | Easy to change         | Months to update          |
+| Abstraction | Clear interfaces       | Brittle, tightly coupled  |
+| SOLID       | Maintainable code      | Technical debt spirals    |
+| Testing     | Confidence to refactor | Regressions in production |
+| Security    | Trust from users       | Loss of reputation        |
+| Scalability | Supports growth        | Complete rewrite needed   |
+
+---
+
+_The best learning comes from studying both successes and failures._

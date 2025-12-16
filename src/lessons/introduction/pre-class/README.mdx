@@ -5,13 +5,13 @@ visibility: "public"
 
 # Pre-Class: Setup & Preparation
 
-Use this page to get ready before the live session. Keep it short and link out to your own docs when needed.
+Use this page to prepare your content repo so the platform can ingest it.
 
 ## ✅ Minimum setup
 
-- Install Node (18+), npm (9+), git (2+)
-- Clone the course repo and install dependencies
-- Ensure you can run the starter app locally
+- GitHub account (or Git provider) and git 2+
+- Node 18+ (optional, for running local validator)
+- Fork or copy this template into your own repository
 
 <!-- question:db:Q_INTRO_001 -->
 
@@ -21,20 +21,34 @@ Use this page to get ready before the live session. Keep it short and link out t
 node --version
 npm --version
 git --version
-npm run dev
+yarn --version
+``` 
+
+Run the local validator (optional but recommended):
+
+```bash
+cd learning-platform-template
+yarn install
+yarn validate
 ```
 
 ## 📚 Optional pre-reading
 
-- Course philosophy and ways to get help
-- Key concepts glossary
-- Community expectations
+- Content model: Git-based source of truth
+- Three phases: Pre, Live, Post + Instructor Notes
+- Questions model: MDX markers + questions.json definitions
 
 ## 📋 Ready-to-join checklist
 
 - [ ] Tools installed and tested
-- [ ] Repo cloned and running locally
-- [ ] Read through expectations
+- [ ] Created/duplicated a lesson folder skeleton
+- [ ] Ran `yarn validate` and fixed any errors
 - [ ] Questions captured for live Q&A
 
 Next: head to the live class page.
+
+## 🖼️ Screenshot placeholders
+
+![Screenshot: Repo Overview](../assets/repo-overview.png "Replace with actual screenshot")
+
+![Screenshot: Questions Marker in MDX](../assets/mdx-question-marker.png "Replace with actual screenshot")

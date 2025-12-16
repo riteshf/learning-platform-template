@@ -1,44 +1,45 @@
 ---
-title: "Setting Expectations"
+title: "Create a Slide & Embed Questions"
 type: "closing"
 visibility: "public"
 ---
-### What We Expect From You
+### 1) Create a slide file
 
-- Attend live sessions (or watch the recording)
-- Complete pre-class preparation
-- Engage in post-class practice
+- Add a new `.mdx` under `slides/` (e.g., `03-examples.mdx`)
+- Include frontmatter:
 
-✅ **Ask Questions**
+```mdx
+---
+title: "Examples"
+type: "content"   
+visibility: "public" 
+---
+```
 
-- Use the community forum anytime
-- Attend office hours for deeper discussions
-- No question is too basic!
+### 2) Reference it in `lesson.json`
 
-✅ **Time Commitment**
+Add the file name to the `slides` array so the platform can order slides:
 
-- Expect to invest steady, focused effort across pre, live, and post segments.
+```json
+{
+	"slides": ["01-intro.mdx", "02-deep-dive.mdx", "03-examples.mdx"]
+}
+```
 
-### What You Can Expect From Us
+### 3) Embed a question in your slide
 
-🎯 **Quality Content**
+Use a marker comment in MDX where the question should render:
 
-- Well-researched, practical material
-- Real-world examples and use cases
-- Regular updates based on feedback
+```mdx
+<!-- q:db:Q_EXAMPLES_001 -->  <!-- example (intentionally not valid) -->
+```
 
-🎯 **Support**
+Then define `Q_EXAMPLES_001` in `questions.json` with its type, options, and answer.
 
-- Responsive instructor support
-- Peer learning community
-- Detailed explanations and resources
+### 4) Instructor-only notes
 
-🎯 **Outcomes**
-
-- Practical skills you can apply immediately
-- Certificate of completion
-- Access to course materials forever
+Put teaching guidance in `instructor-notes/README.mdx` and set `visibility: "instructor"` in the frontmatter. The platform will hide this from students.
 
 ---
 
-**Ready to get started?** Let's move to the pre-class materials!
+You're ready to add questions next. See the examples in this lesson’s `questions.json`.

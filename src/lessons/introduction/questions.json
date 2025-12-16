@@ -1,0 +1,69 @@
+[
+  {
+    "questionId": "Q_INTRO_001",
+    "type": "CHECKLIST",
+    "title": "Pre-authoring readiness",
+    "description": "Confirm you’re set up to author content.",
+    "questionText": "Check all items you’ve completed:",
+    "options": [
+      {
+        "id": "forked",
+        "label": "Forked/copied this template into my own repo"
+      },
+      {
+        "id": "lesson-skeleton",
+        "label": "Created a lesson folder skeleton with phase files"
+      },
+      {
+        "id": "slide-added",
+        "label": "Added at least one slide under slides/"
+      },
+      {
+        "id": "questions-json",
+        "label": "Created questions.json with at least one question"
+      }
+    ],
+    "isMandatory": false,
+    "points": 0,
+    "order": 1
+  },
+  {
+    "questionId": "Q_INTRO_002",
+    "type": "POLL",
+    "title": "What should we cover next?",
+    "description": null,
+    "questionText": "Which area do you want to see demonstrated in detail?",
+    "options": [
+      "Creating slides",
+      "Defining questions.json",
+      "Instructor notes",
+      "Validation & sync"
+    ],
+    "isMandatory": false,
+    "points": 0,
+    "order": 2
+  },
+  {
+    "questionId": "Q_INTRO_003",
+    "type": "MCQ",
+    "title": "Where do slide files live?",
+    "description": null,
+    "questionText": "Select the correct folder for slide MDX files in a lesson:",
+    "options": ["pre-class/", "slides/", "post-class/", "instructor-notes/"],
+    "correctAnswer": "slides/",
+    "explanation": "Place all slide .mdx files under the slides/ folder and reference them in lesson.json.",
+    "points": 1,
+    "order": 3
+  },
+  {
+    "questionId": "Q_INTRO_004",
+    "type": "FILL_IN_BLANK",
+    "title": "Which file lists slides?",
+    "description": null,
+    "questionText": "Name the file that lists and orders slide filenames (e.g., [\"01-intro.mdx\"]).",
+    "correctAnswer": ["lesson.json", "LESSON.JSON"],
+    "explanation": "The slides array lives in lesson.json.",
+    "points": 1,
+    "order": 4
+  }
+]

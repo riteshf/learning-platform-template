@@ -1,32 +1,45 @@
 ---
-title: "Core Concept: Hybrid Learning Model"
+title: "Create a Lesson"
 type: "content"
 visibility: "public"
 ---
-This course uses an innovative **hybrid learning approach**:
 
-1. **Pre-Class Materials** (Available before live session)
-   - Setup and installation guides
-   - Conceptual reading and videos
-   - Preparation checklist
+Follow this exact structure for each lesson. Replace `my-lesson/` with your slug.
 
-2. **Live Class** (Real-time interaction)
-   - Instructor-led demonstrations
-   - Interactive polling and quizzes
-   - Q&A session
-   - Code walkthroughs
+```text
+src/lessons/
+   my-lesson/
+      lesson.json
+      pre-class/README.mdx
+      live-class/README.mdx
+      post-class/README.mdx
+      instructor-notes/README.mdx   # visibility: "instructor"
+      slides/
+         01-intro.mdx
+         02-deep-dive.mdx
+      assets/
+         .keep
+```
 
-3. **Post-Class Practice** (After live session)
-   - Hands-on assignments
-   - Self-assessment quizzes
-   - Deep-dive articles and resources
+Minimal `lesson.json`:
 
-### Why This Structure?
+```json
+{
+   "title": "My Lesson Title",
+   "description": "What learners will do",
+   "objectives": ["One", "Two"],
+   "durationMinutes": 60,
+   "tags": ["topic"],
+   "slides": ["01-intro.mdx", "02-deep-dive.mdx"]
+}
+```
 
-- **Flexibility**: Learn at your own pace during pre/post phases
-- **Community**: Engage live with instructors and peers
-- **Reinforcement**: Multiple touchpoints with the material
+Embed questions inside MDX using comment markers:
 
-> Questions during live class are tracked and used to improve future sessions.
+```mdx
+<!-- q:db:Q_MY_LESSON_001 -->  <!-- example (intentionally not valid) -->
+```
+
+Define all referenced question IDs in `src/lessons/my-lesson/questions.json`.
 
 <!-- question:db:Q_INTRO_001 -->

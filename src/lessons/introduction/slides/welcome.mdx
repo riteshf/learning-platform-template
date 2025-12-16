@@ -1,22 +1,26 @@
 ---
-title: "Welcome to the Course"
+title: "Welcome: How to Use the Platform"
 type: "intro"
 visibility: "public"
 ---
 
-# Welcome to the Course
+# Welcome: How to Use the Platform
 
-Let's get started on your learning journey! This course is designed to help you:
+This guide shows instructors how to author content that the platform can ingest from Git.
 
-- Understand foundational concepts
-- Build hands-on skills through projects
-- Engage with a supportive community
-- Progress at your own pace
+You will:
 
-## Course Highlights
+- Create a lesson folder and `lesson.json`
+- Add Pre, Live, Post, and Instructor Notes pages
+- Create slides and reference them in `lesson.json`
+- Embed questions using MDX markers
+- Add all question definitions in `questions.json`
 
-- **Format**: Pre-class, live sessions, and post-class practice
-- **Instructor**: John Doe
-- **Support**: Community forum + office hours
+## Authoring Flow (High-Level)
 
-> **Pro Tip**: Prepare your environment in the pre-class section before joining the live session!
+- Author content in this repo format
+- Run local validation to catch issues
+- Link your GitHub repo in the platform UI
+- Trigger a sync; the backend parses your repo and serves it live
+
+> Tip: Keep file names stable; the platform relies on paths and IDs.

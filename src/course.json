@@ -1,12 +1,12 @@
 {
-  "title": "Sample Course - Getting Started",
-  "description": "A lean starter that shows how to mix Git-based content with runtime questions.",
+  "title": "Learning Platform Authoring Guide",
+  "description": "Create and manage lessons, slides, and questions using Git-based content for the Learning Platform.",
   "level": "beginner",
-  "category": "development",
-  "tags": ["template", "hybrid"],
+  "category": "course-authoring",
+  "tags": ["lms", "authoring", "mdx", "questions", "template"],
   "instructors": [
     {
-      "name": "John Doe",
+      "name": "Learning Platform Team",
       "email": "instructor@example.com"
     }
   ],

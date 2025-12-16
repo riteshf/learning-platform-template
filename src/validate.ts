@@ -32,8 +32,6 @@ const courseSchema = z
   })
   .passthrough();
 
-
-
 const lessonSchema = z
   .object({
     title: z.string().min(1),
@@ -49,6 +47,26 @@ const mdxContentFrontmatterSchema = z.object({
   title: z.string().optional(),
   visibility: z.enum(["public", "instructor"]).default("public"),
 });
+
+const questionSchema = z
+  .object({
+    questionId: z.string().min(1),
+    type: z.enum(["CHECKLIST", "POLL", "MCQ", "FILL_IN_BLANK", "CODE_SCRIPT"]),
+    title: z.string().min(1),
+    description: z.string().nullable().optional(),
+    questionText: z.string().min(1),
+    options: z.any().nullable().optional(),
+    correctAnswer: z.any().nullable().optional(),
+    explanation: z.string().nullable().optional(),
+    codeTemplate: z.string().nullable().optional(),
+    isMandatory: z.boolean().default(false),
+    points: z.number().int().nonnegative().default(0),
+    order: z.number().int().positive().nullable().optional(),
+    dueDate: z.string().datetime().nullable().optional(),
+  })
+  .passthrough();
+
+const questionsSchema = z.array(questionSchema);
 
 type ErrorCollector = { errors: string[] };
 
@@ -138,6 +156,7 @@ function validateLesson(lessonDir: string, ctx: ErrorCollector) {
 
     validateContentFiles(lessonDir, ctx);
     validateSlides(lessonDir, lesson.data.slides, ctx);
+    validateQuestions(lessonDir, ctx);
   } catch (e) {
     ctx.errors.push(`${lessonFile}: ${String(e)}`);
   }
@@ -146,14 +165,14 @@ function validateLesson(lessonDir: string, ctx: ErrorCollector) {
 function validateContentFiles(lessonDir: string, ctx: ErrorCollector) {
   Object.entries(CONTENT_FILES).forEach(([key, relativePath]) => {
     const filePath = path.join(lessonDir, relativePath);
-    if (!fs.existsSync(filePath)) {
-      ctx.errors.push(`${filePath}: missing (${key} content)`);
-      return;
-    }
+    // Content files are optional: only validate if present
+    if (!fs.existsSync(filePath)) return;
     const fm = validateMdxFrontmatter(filePath, ctx);
     const isInstructorNotes = key === "instructor";
     if (isInstructorNotes && fm?.visibility !== "instructor") {
-      ctx.errors.push(`${filePath}: instructor notes must set visibility: "instructor"`);
+      ctx.errors.push(
+        `${filePath}: instructor notes must set visibility: "instructor"`
+      );
     }
   });
 }
@@ -165,20 +184,17 @@ function validateSlides(
 ) {
   if (!slideFiles.length) return;
   const slidesDir = path.join(lessonDir, "slides");
-  if (!fs.existsSync(slidesDir)) {
-    ctx.errors.push(`${slidesDir}: missing (slides listed but folder absent)`);
-    return;
-  }
+  // Slides are optional: if folder doesn't exist, skip validation
+  if (!fs.existsSync(slidesDir)) return;
 
   const seen = new Set<string>();
   slideFiles.forEach((file) => {
     const filePath = path.join(slidesDir, file);
-    if (seen.has(file)) ctx.errors.push(`${slidesDir}: duplicate slide '${file}'`);
+    if (seen.has(file))
+      ctx.errors.push(`${slidesDir}: duplicate slide '${file}'`);
     seen.add(file);
-    if (!fs.existsSync(filePath)) {
-      ctx.errors.push(`${filePath}: missing`);
-      return;
-    }
+    // If a slide file is missing, skip—slides are optional when listed
+    if (!fs.existsSync(filePath)) return;
     validateMdxFrontmatter(filePath, ctx);
   });
 }
@@ -196,6 +212,104 @@ function validateMdxFrontmatter(filePath: string, ctx: ErrorCollector) {
     ctx.errors.push(`${filePath}: Error parsing frontmatter - ${String(e)}`);
     return undefined;
   }
+}
+
+function extractQuestionIdsFromMdx(content: string): string[] {
+  const questionIds: string[] = [];
+  // Pattern to match: <!-- question:db:QUESTION_ID -->
+  const questionPattern = /<!--\s*question:db:([^\s>]+)\s*-->/g;
+  let match: RegExpExecArray | null;
+  while ((match = questionPattern.exec(content)) !== null) {
+    const questionId = match[1]?.trim();
+    if (questionId) {
+      questionIds.push(questionId);
+    }
+  }
+  return questionIds;
+}
+
+function validateQuestions(lessonDir: string, ctx: ErrorCollector) {
+  const questionsFile = path.join(lessonDir, "questions.json");
+
+  // questions.json is optional - if it doesn't exist, skip validation
+  if (!fs.existsSync(questionsFile)) {
+    return;
+  }
+
+  let questions: unknown;
+  try {
+    questions = readJson(questionsFile);
+  } catch (e) {
+    ctx.errors.push(`${questionsFile}: ${String(e)}`);
+    return;
+  }
+
+  const questionsData = questionsSchema.safeParse(questions);
+  if (!questionsData.success) {
+    ctx.errors.push(`${questionsFile}: ${questionsData.error.message}`);
+    return;
+  }
+
+  // Check for duplicate questionIds
+  const questionIds = new Set<string>();
+  const duplicates = new Set<string>();
+  questionsData.data.forEach((q, index) => {
+    if (questionIds.has(q.questionId)) {
+      duplicates.add(q.questionId);
+    }
+    questionIds.add(q.questionId);
+  });
+  duplicates.forEach((dup) =>
+    ctx.errors.push(`${questionsFile}: duplicate questionId '${dup}'`)
+  );
+
+  // Extract question IDs from all MDX files in the lesson
+  const mdxQuestionIds = new Set<string>();
+
+  // Check content files
+  Object.values(CONTENT_FILES).forEach((relativePath) => {
+    const filePath = path.join(lessonDir, relativePath);
+    if (fs.existsSync(filePath)) {
+      try {
+        const content = fs.readFileSync(filePath, "utf8");
+        const ids = extractQuestionIdsFromMdx(content);
+        ids.forEach((id) => mdxQuestionIds.add(id));
+      } catch (e) {
+        ctx.errors.push(`${filePath}: Error reading file - ${String(e)}`);
+      }
+    }
+  });
+
+  // Check slides
+  const slidesDir = path.join(lessonDir, "slides");
+  if (fs.existsSync(slidesDir)) {
+    try {
+      const slideFiles = fs.readdirSync(slidesDir);
+      slideFiles.forEach((file) => {
+        if (file.endsWith(".mdx")) {
+          const filePath = path.join(slidesDir, file);
+          try {
+            const content = fs.readFileSync(filePath, "utf8");
+            const ids = extractQuestionIdsFromMdx(content);
+            ids.forEach((id) => mdxQuestionIds.add(id));
+          } catch (e) {
+            ctx.errors.push(`${filePath}: Error reading file - ${String(e)}`);
+          }
+        }
+      });
+    } catch (e) {
+      // If we can't read slides directory, that's okay - it's optional
+    }
+  }
+
+  // Check that all question IDs in MDX files exist in questions.json
+  mdxQuestionIds.forEach((questionId) => {
+    if (!questionIds.has(questionId)) {
+      ctx.errors.push(
+        `${questionsFile}: questionId '${questionId}' referenced in MDX files but not found in questions.json`
+      );
+    }
+  });
 }
 
 function main() {

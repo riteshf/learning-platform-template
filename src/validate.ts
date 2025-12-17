@@ -7,10 +7,10 @@ const COURSE_FILE = "course.json";
 const LESSONS_DIR = "lessons";
 
 const CONTENT_FILES = {
-  pre: "pre-class/README.mdx",
-  live: "live-class/README.mdx",
-  post: "post-class/README.mdx",
-  instructor: "instructor-notes/README.mdx",
+  pre: "pre.mdx",
+  live: "live.mdx",
+  post: "post.mdx",
+  instructor: "instructor.mdx",
 };
 
 const courseSchema = z

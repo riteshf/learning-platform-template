@@ -10,5 +10,5 @@
       "email": "instructor@example.com"
     }
   ],
-  "lessonOrder": ["introduction", "core-concepts"]
+  "lessonOrder": ["introduction", "sample-onboarding", "core-concepts"]
 }

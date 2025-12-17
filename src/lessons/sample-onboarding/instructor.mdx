@@ -1,0 +1,33 @@
+---
+visibility: "instructor"
+title: "Instructor Notes: Sample Onboarding"
+---
+
+## Instructor Notes: Sample Onboarding
+
+Focus on the exact authoring flow and common pitfalls.
+
+### Emphasize
+
+- Stable slugs and `questionId`s
+- Frontmatter visibility (INSTRUCTOR vs public)
+- Matching MDX markers to `questions.json`
+
+### Flow
+
+- Show folder creation → add files
+- Add one slide and marker
+- Open `questions.json` and add the entry
+- Run `yarn validate`
+
+### Common Errors
+
+- Marker ID not found in `questions.json`
+- Instructor notes missing `visibility: "instructor"`
+- Slide not listed in `lesson.json` `slides`
+
+### Quick checklist
+
+- [ ] Poll ID handy
+- [ ] One of each question type present
+- [ ] Validator passes

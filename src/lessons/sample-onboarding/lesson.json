@@ -1,0 +1,12 @@
+{
+  "title": "Sample Onboarding Lesson",
+  "description": "A complete, create-from-scratch walkthrough: lesson files, slides, questions, and instructor notes.",
+  "objectives": [
+    "Create all lesson files",
+    "Embed and define questions",
+    "Validate and prepare for sync"
+  ],
+  "durationMinutes": 60,
+  "tags": ["sample", "onboarding", "authoring"],
+  "slides": ["01-overview.mdx", "02-create-files.mdx", "03-questions.mdx"]
+}

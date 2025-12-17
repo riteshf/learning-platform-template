@@ -1,0 +1,101 @@
+[
+  {
+    "questionId": "Q_SAMPLE_PRE_CHECK",
+    "type": "CHECKLIST",
+    "title": "Pre-check",
+    "description": null,
+    "questionText": "Mark all prep steps completed:",
+    "options": [
+      { "id": "forked", "label": "Forked/copied the template" },
+      { "id": "created-lesson", "label": "Created the lesson folder" },
+      { "id": "slides-listed", "label": "Slides listed in lesson.json" }
+    ],
+    "points": 0,
+    "order": 1
+  },
+  {
+    "questionId": "Q_SAMPLE_POLL_FOCUS",
+    "type": "POLL",
+    "title": "Focus area",
+    "description": null,
+    "questionText": "Which step should we slow down for?",
+    "options": ["lesson.json", "slides", "markers", "questions.json"],
+    "points": 0,
+    "order": 2
+  },
+  {
+    "questionId": "Q_SAMPLE_MCQ_INTRO",
+    "type": "MCQ",
+    "title": "Where do slides live?",
+    "description": null,
+    "questionText": "Select the correct folder for slide files:",
+    "options": ["pre-class/", "slides/", "post-class/", "instructor-notes/"],
+    "correctAnswer": "slides/",
+    "points": 1,
+    "order": 3
+  },
+  {
+    "questionId": "Q_SAMPLE_FILL_FILE_NAME",
+    "type": "FILL_IN_BLANK",
+    "title": "Which file lists slides?",
+    "description": null,
+    "questionText": "Name the JSON file that includes the slides list.",
+    "correctAnswer": ["lesson.json", "LESSON.JSON"],
+    "points": 1,
+    "order": 4
+  },
+  {
+    "questionId": "Q_SAMPLE_MCQ_SLIDES_DIR",
+    "type": "MCQ",
+    "title": "Slides directory",
+    "description": null,
+    "questionText": "Which directory contains slide .mdx files?",
+    "options": ["slides/", "assets/", "pre-class/", "post-class/"],
+    "correctAnswer": "slides/",
+    "points": 1,
+    "order": 5
+  },
+  {
+    "questionId": "Q_SAMPLE_FILL_LESSON_FILE",
+    "type": "FILL_IN_BLANK",
+    "title": "Lesson meta file",
+    "description": null,
+    "questionText": "What is the file name for lesson metadata (title, slides)?",
+    "correctAnswer": ["lesson.json", "LESSON.JSON"],
+    "points": 1,
+    "order": 6
+  },
+  {
+    "questionId": "Q_SAMPLE_CODE_SCRIPT",
+    "type": "CODE_SCRIPT",
+    "title": "Build slides array",
+    "description": null,
+    "questionText": "Complete the function to return slide filenames ending in .mdx, sorted.",
+    "codeTemplate": "export function slides(files: string[]): string[] {\n  // TODO: filter .mdx and sort ASC\n  return files;\n}",
+    "points": 2,
+    "order": 7
+  },
+  {
+    "questionId": "Q_SAMPLE_CHECK_PUBLISH",
+    "type": "CHECKLIST",
+    "title": "Publish checklist",
+    "description": "Ready to sync?",
+    "questionText": "Mark all that apply:",
+    "options": [
+      {
+        "id": "markers-defined",
+        "label": "Every MDX marker has a matching entry in questions.json"
+      },
+      {
+        "id": "slides-listed",
+        "label": "All slides are listed in lesson.json"
+      },
+      {
+        "id": "instructor-visibility",
+        "label": "Instructor notes have visibility: 'instructor'"
+      }
+    ],
+    "points": 0,
+    "order": 8
+  }
+]

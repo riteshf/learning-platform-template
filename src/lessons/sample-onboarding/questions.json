@@ -24,17 +24,6 @@
     "order": 2
   },
   {
-    "questionId": "Q_SAMPLE_MCQ_INTRO",
-    "type": "MCQ",
-    "title": "Where do slides live?",
-    "description": null,
-    "questionText": "Select the correct folder for slide files:",
-    "options": ["pre-class/", "slides/", "post-class/", "instructor-notes/"],
-    "correctAnswer": "slides/",
-    "points": 1,
-    "order": 3
-  },
-  {
     "questionId": "Q_SAMPLE_FILL_FILE_NAME",
     "type": "FILL_IN_BLANK",
     "title": "Which file lists slides?",
@@ -42,7 +31,7 @@
     "questionText": "Name the JSON file that includes the slides list.",
     "correctAnswer": ["lesson.json", "LESSON.JSON"],
     "points": 1,
-    "order": 4
+    "order": 3
   },
   {
     "questionId": "Q_SAMPLE_MCQ_SLIDES_DIR",
@@ -53,28 +42,9 @@
     "options": ["slides/", "assets/", "pre-class/", "post-class/"],
     "correctAnswer": "slides/",
     "points": 1,
-    "order": 5
+    "order": 4
   },
-  {
-    "questionId": "Q_SAMPLE_FILL_LESSON_FILE",
-    "type": "FILL_IN_BLANK",
-    "title": "Lesson meta file",
-    "description": null,
-    "questionText": "What is the file name for lesson metadata (title, slides)?",
-    "correctAnswer": ["lesson.json", "LESSON.JSON"],
-    "points": 1,
-    "order": 6
-  },
-  {
-    "questionId": "Q_SAMPLE_CODE_SCRIPT",
-    "type": "CODE_SCRIPT",
-    "title": "Build slides array",
-    "description": null,
-    "questionText": "Complete the function to return slide filenames ending in .mdx, sorted.",
-    "codeTemplate": "export function slides(files: string[]): string[] {\n  // TODO: filter .mdx and sort ASC\n  return files;\n}",
-    "points": 2,
-    "order": 7
-  },
+
   {
     "questionId": "Q_SAMPLE_CHECK_PUBLISH",
     "type": "CHECKLIST",
@@ -96,6 +66,6 @@
       }
     ],
     "points": 0,
-    "order": 8
+    "order": 5
   }
 ]

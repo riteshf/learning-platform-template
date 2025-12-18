@@ -1,6 +1,8 @@
 {
   "title": "Sample Onboarding Lesson",
   "description": "A complete, create-from-scratch walkthrough: lesson files, slides, questions, and instructor notes.",
+  "hidden": false,
+  "locked": false,
   "objectives": [
     "Create all lesson files",
     "Embed and define questions",

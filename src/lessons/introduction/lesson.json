@@ -1,6 +1,8 @@
 {
   "title": "Introduction & Course Overview",
   "description": "What to expect, how to navigate this course, and how questions flow across phases.",
+  "hidden": false,
+  "locked": false,
   "objectives": [
     "Understand the pre/live/post rhythm",
     "Confirm local setup before live class",

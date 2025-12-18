@@ -36,6 +36,8 @@ const lessonSchema = z
   .object({
     title: z.string().min(1),
     description: z.string().min(1),
+    hidden: z.boolean().default(false).optional(),
+    locked: z.boolean().default(false).optional(),
     objectives: z.array(z.string().min(1)).default([]),
     durationMinutes: z.number().int().positive().optional(),
     tags: z.array(z.string().min(1)).default([]),

@@ -269,10 +269,10 @@ src/
 └── lessons/
     └── your-lesson/
         ├── lesson.json
-        ├── pre-class/README.mdx
-        ├── live-class/README.mdx
-        ├── post-class/README.mdx
-        ├── instructor-notes/README.mdx
+        ├── pre.mdx
+        ├── live.mdx
+        ├── post.mdx
+        ├── instructor.mdx
         ├── slides/
         │   ├── slide-1.mdx
         │   └── slide-2.mdx
@@ -311,7 +311,7 @@ src/
 }
 ```
 
-Defaults: content files are always `pre-class/README.mdx`, `live-class/README.mdx`, `post-class/README.mdx`, `instructor-notes/README.mdx`. Slides are optional; list filenames to enforce order. **All questions live inside MDX via comments** like `<!-- question:db:Q_SOMETHING_001 -->` and are injected at runtime from the backend.
+Defaults: content files are always `pre.mdx`, `live.mdx`, `post.mdx`, `instructor.mdx`. Slides are optional; list filenames to enforce order. **All questions live inside MDX via comments** like `<!-- question:db:Q_SOMETHING_001 -->` and are injected at runtime from the backend.
 
 ## MDX pages
 - Use frontmatter `visibility: "public"` for learner-facing pages.

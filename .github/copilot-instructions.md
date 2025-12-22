@@ -15,10 +15,10 @@ src/
 └── lessons/
     └── {lesson-slug}/
         ├── lesson.json      # Lesson metadata (title, objectives, slides, duration)
-        ├── pre-class/README.mdx
-        ├── live-class/README.mdx
-        ├── post-class/README.mdx
-        ├── instructor-notes/README.mdx
+        ├── pre.mdx
+        ├── live.mdx
+        ├── post.mdx
+        ├── instructor.mdx
         ├── slides/          # Optional ordered slide deck
         │   └── *.mdx
         └── assets/          # Images, diagrams, etc.
@@ -27,38 +27,50 @@ src/
 ## Critical Conventions
 
 ### 1. Lesson Structure (Non-Negotiable)
+
 Every lesson MUST have exactly these four MDX files in these exact paths:
-- `pre-class/README.mdx`
-- `live-class/README.mdx`
-- `post-class/README.mdx`
-- `instructor-notes/README.mdx`
+
+- `pre.mdx`
+- `live.mdx`
+- `post.mdx`
+- `instructor.mdx`
 
 ### 2. MDX Frontmatter
+
 All MDX files require frontmatter with `visibility`:
+
 ```yaml
 ---
-visibility: "public"  # or "instructor" for instructor-notes only
+visibility: "public" # or "instructor" for instructor-notes only
 title: "Optional Title"
 ---
 ```
-**Rule**: `instructor-notes/README.mdx` MUST use `visibility: "instructor"`. All others default to `"public"`.
+
+**Rule**: `instructor.mdx` MUST use `visibility: "instructor"`. All others default to `"public"`.
 
 ### 3. Question Embedding
+
 Questions are **never** written inline. Use HTML comments with database IDs:
+
 ```markdown
 <!-- question:db:Q_INTRO_001 -->
 <!-- question:db:Q_CORE_042 -->
 ```
+
 The platform backend renders actual question content at runtime based on these IDs.
 
 ### 4. Lesson Registration
+
 To add a lesson:
+
 1. Create folder in `src/lessons/{slug}`
 2. Add `{slug}` to `lessonOrder` array in `src/course.json`
 3. Ensure no duplicates in `lessonOrder`
 
 ### 5. Slides (Optional)
+
 If `lesson.json` lists slides, they MUST:
+
 - Exist in `slides/` subdirectory with exact filenames
 - Have no duplicates in the array
 - Maintain the order specified (used for navigation)
@@ -66,11 +78,13 @@ If `lesson.json` lists slides, they MUST:
 ## Validation Workflow
 
 **Always run before committing**:
+
 ```bash
 npm run validate
 ```
 
 Validation checks (via `src/validate.ts` using Zod schemas):
+
 - ✅ Required files exist (`course.json`, `lesson.json`, four MDX files per lesson)
 - ✅ JSON schemas match (`courseSchema`, `lessonSchema`)
 - ✅ MDX frontmatter is valid
@@ -81,6 +95,7 @@ Validation checks (via `src/validate.ts` using Zod schemas):
 ## Developer Workflow
 
 ### Adding a New Lesson
+
 ```bash
 # 1. Copy template
 cp -r src/lessons/introduction src/lessons/your-new-lesson
@@ -93,7 +108,9 @@ npm run validate
 ```
 
 ### Updating Course Metadata
+
 Edit `src/course.json`:
+
 - `level`: Must be `"beginner"`, `"intermediate"`, or `"advanced"`
 - `lessonOrder`: Array of lesson slugs (folder names)
 - Ensure every folder in `src/lessons/` appears in `lessonOrder`

@@ -2,13 +2,21 @@
   "name": "learning-content-template",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Lean, production-grade template for Git-based course content with runtime-injected questions.",
-  "keywords": ["learning", "course", "template", "hybrid-model", "mdx", "validation"],
+  "keywords": [
+    "learning",
+    "course",
+    "template",
+    "hybrid-model",
+    "mdx",
+    "validation"
+  ],
   "author": "Learning Platform Team",
   "license": "MIT",
   "scripts": {
-    "validate": "ts-node src/validate.ts",
-    "validate:watch": "ts-node --watch src/validate.ts"
+    "validate": "tsx src/validate.ts",
+    "validate:watch": "tsx watch src/validate.ts"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

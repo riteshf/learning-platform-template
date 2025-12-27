@@ -35,12 +35,14 @@ Be respectful, inclusive, and collaborative.
 ## Validation
 
 Before submitting, ensure:
+
 ```bash
 npm run validate
 ```
 
 Checks performed:
-- Required files (course.json, _meta.json, lesson.json) exist
+
+- Required files (course.json, \_meta.json, lesson.json) exist
 - JSON schemas are valid
 - All referenced content files exist
 - Frontmatter in MDX is valid
@@ -50,6 +52,7 @@ Checks performed:
 ## Style guide
 
 **MDX Files:**
+
 - Use `visibility: "public"` for learner content, `visibility: "instructor"` for instructor notes
 - Keep sections concise and scannable
 - Use clear headings and bullet points
@@ -57,13 +60,15 @@ Checks performed:
 - Embed questions as HTML comments
 
 **JSON Files:**
+
 - Use lowercase strings for simple fields (category)
 - Keep objectives focused (3–5 per lesson)
 - List only the slides you'll actively use
 - Use descriptive, short titles and summaries
 
 **Question IDs:**
-- Format: `Q_[LESSONCODE]_###` 
+
+- Format: `Q_[LESSONCODE]_###`
 - Example: `Q_INTRO_001`
 
 ## Questions?

@@ -7,6 +7,7 @@ If you prefer a brief overview, see QUICKSTART.md. Otherwise, follow this guide 
 ---
 
 ## What You’ll Do
+
 - Prepare a copy of this course template
 - Link your repository in the platform
 - Add course details (title, description, levels, tags)
@@ -17,6 +18,7 @@ If you prefer a brief overview, see QUICKSTART.md. Otherwise, follow this guide 
 ---
 
 ## Before You Start
+
 - A GitHub account with access to create a repository
 - Course outline (lesson titles, rough durations, objectives)
 - A few images/screenshots if available (optional)
@@ -42,6 +44,7 @@ Note: You’ll paste your repo URL in the platform’s “Link Repository” mod
 ---
 
 ## 2) Link Your Repository in the Platform
+
 1. Open the Learning Platform dashboard and sign in.
 2. Go to Courses → “Add Course”.
 3. In the “Link Repository” modal, paste your GitHub repository URL (the one you created from this template).
@@ -56,6 +59,7 @@ Tip: If you don’t have a course yet, it’s fine—link first, then fill in co
 ---
 
 ## 3) Understand the Course Structure
+
 Your course content lives in the src/ folder of your repository:
 
 - src/course.json — course-level information (title, slug, lesson order)
@@ -75,6 +79,7 @@ The platform never stores your raw content. It reads what’s in your repo when 
 ---
 
 ## 4) Set Course Details (src/course.json)
+
 Open src/course.json and fill in:
 
 - title: Your course name
@@ -102,6 +107,7 @@ Example (simplified):
 ---
 
 ## 5) Create Lessons
+
 Each lesson lives under src/lessons/<lesson-slug> with four content files and optional slides/questions:
 
 - pre.mdx — Prep guidance, checklists, installs
@@ -139,6 +145,7 @@ Example lesson.json (simplified):
 ---
 
 ## 6) Write Your Three Phases
+
 Keep it simple and student-friendly.
 
 - Pre-Class (pre.mdx):
@@ -166,6 +173,7 @@ Keep it simple and student-friendly.
 ---
 
 ## 7) Add Slides (Optional but Recommended)
+
 Place .mdx files under slides/ using a numbered prefix to control order:
 
 - slides/01-welcome.mdx
@@ -179,6 +187,7 @@ If you list "slides" in lesson.json, that order is used; otherwise the platform 
 ---
 
 ## 8) Add Questions (Optional but Powerful)
+
 Questions appear inline within live and post phases. Keep them clear and short. Supported types include checklists, polls, MCQs, fill-in-the-blank, and code scripts.
 
 - File: src/lessons/<lesson-slug>/questions.json
@@ -192,6 +201,7 @@ Questions appear inline within live and post phases. Keep them clear and short. 
 ---
 
 ## 9) Sync Your Course
+
 1. In the platform, open your course.
 2. Click “Sync from Repository”.
 3. The platform reads your repo and updates lessons, phases, slides, and questions.
@@ -202,6 +212,7 @@ Questions appear inline within live and post phases. Keep them clear and short. 
 ---
 
 ## 10) Publish and Share
+
 - Toggle “Publish” when you’re ready for students.
 - Invite learners or share the enrollment link.
 - You can update content anytime—just push to GitHub and click “Sync” again.
@@ -211,6 +222,7 @@ Questions appear inline within live and post phases. Keep them clear and short. 
 ---
 
 ## Best Practices
+
 - Keep lessons short: 30–60 minutes is ideal
 - Start each phase with a clear goal
 - Use visuals generously (diagrams, screenshots)
@@ -221,6 +233,7 @@ Questions appear inline within live and post phases. Keep them clear and short. 
 ---
 
 ## Troubleshooting
+
 - I don’t see my updates after syncing
   - Ensure your changes are committed and pushed
   - Click “Sync from Repository” again
@@ -240,6 +253,7 @@ If you still need help, contact your platform admin.
 ---
 
 ## At-a-Glance Checklist
+
 - Create or fork the template repository
 - Link the repository in the platform
 - Fill in src/course.json
@@ -256,6 +270,7 @@ You’re all set—happy teaching!
 - **Role-aware**: Instructor notes are Git-versioned but role-protected at runtime.
 
 ## Quick start
+
 - Update `src/course.json` with your course meta and lesson order.
 - Copy `src/lessons/introduction` as a starter and rename the folder.
 - Edit the four MDX files (pre, live, post, instructor notes).
@@ -263,6 +278,7 @@ You’re all set—happy teaching!
 - Run `npm run validate` any time.
 
 ## Folder layout
+
 ```
 src/
 ├── course.json
@@ -280,7 +296,9 @@ src/
 ```
 
 ## Metadata (JSON)
+
 `course.json`
+
 ```json
 {
   "title": "Sample Course - Getting Started",
@@ -288,14 +306,13 @@ src/
   "level": "beginner",
   "category": "development",
   "tags": ["template", "hybrid"],
-  "instructors": [
-    { "name": "John Doe", "email": "instructor@example.com" }
-  ],
+  "instructors": [{ "name": "John Doe", "email": "instructor@example.com" }],
   "lessonOrder": ["introduction", "core-concepts"]
 }
 ```
 
 `lesson.json` (one per lesson)
+
 ```json
 {
   "title": "Introduction & Course Overview",
@@ -314,12 +331,14 @@ src/
 Defaults: content files are always `pre.mdx`, `live.mdx`, `post.mdx`, `instructor.mdx`. Slides are optional; list filenames to enforce order. **All questions live inside MDX via comments** like `<!-- question:db:Q_SOMETHING_001 -->` and are injected at runtime from the backend.
 
 ## MDX pages
+
 - Use frontmatter `visibility: "public"` for learner-facing pages.
 - Instructor notes must set `visibility: "instructor"`.
 - Reference questions with `<!-- question:db:Q_SOMETHING_001 -->`.
 - The platform renders them at runtime from your backend.
 
 Phases per lesson:
+
 - Pre-Class: installations, checklist, light pre-read
 - Live Class: agenda and placeholders for polls/MCQs/code
 - Post-Class: one practice task + reflection
@@ -328,10 +347,12 @@ Phases per lesson:
 Questions & Assignments: embed them directly as HTML comments in MDX; the platform injects them at runtime based on the ID.
 
 ## Validation
+
 ```bash
 npm install
 npm run validate
 ```
+
 Checks: required files exist, JSON matches schema, frontmatter is valid in MDX, instructor notes marked instructor-only, no duplicate slides or lessons.
 
 ## Contributing

@@ -119,9 +119,7 @@ function validateCourse(courseDir: string, ctx: ErrorCollector) {
       if (seen.has(slug)) duplicates.add(slug);
       seen.add(slug);
     });
-    duplicates.forEach((dup) =>
-      ctx.errors.push(`${courseFile}: duplicate lesson '${dup}'`)
-    );
+    duplicates.forEach((dup) => ctx.errors.push(`${courseFile}: duplicate lesson '${dup}'`));
 
     lessonDirs.forEach((dir) => {
       if (!lessonOrder.includes(dir)) {
@@ -172,18 +170,12 @@ function validateContentFiles(lessonDir: string, ctx: ErrorCollector) {
     const fm = validateMdxFrontmatter(filePath, ctx);
     const isInstructorNotes = key === "instructor";
     if (isInstructorNotes && fm?.visibility !== "instructor") {
-      ctx.errors.push(
-        `${filePath}: instructor notes must set visibility: "instructor"`
-      );
+      ctx.errors.push(`${filePath}: instructor notes must set visibility: "instructor"`);
     }
   });
 }
 
-function validateSlides(
-  lessonDir: string,
-  slideFiles: string[],
-  ctx: ErrorCollector
-) {
+function validateSlides(lessonDir: string, slideFiles: string[], ctx: ErrorCollector) {
   if (!slideFiles.length) return;
   const slidesDir = path.join(lessonDir, "slides");
   // Slides are optional: if folder doesn't exist, skip validation
@@ -192,8 +184,7 @@ function validateSlides(
   const seen = new Set<string>();
   slideFiles.forEach((file) => {
     const filePath = path.join(slidesDir, file);
-    if (seen.has(file))
-      ctx.errors.push(`${slidesDir}: duplicate slide '${file}'`);
+    if (seen.has(file)) ctx.errors.push(`${slidesDir}: duplicate slide '${file}'`);
     seen.add(file);
     // If a slide file is missing, skip—slides are optional when listed
     if (!fs.existsSync(filePath)) return;
@@ -261,9 +252,7 @@ function validateQuestions(lessonDir: string, ctx: ErrorCollector) {
     }
     questionIds.add(q.questionId);
   });
-  duplicates.forEach((dup) =>
-    ctx.errors.push(`${questionsFile}: duplicate questionId '${dup}'`)
-  );
+  duplicates.forEach((dup) => ctx.errors.push(`${questionsFile}: duplicate questionId '${dup}'`));
 
   // Extract question IDs from all MDX files in the lesson
   const mdxQuestionIds = new Set<string>();
